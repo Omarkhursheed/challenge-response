@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+</head>
+<body>
+	<form action="{{ url_for('signup') }}" method="POST">
+		 <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}" id="username">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}" id="password">
+         <br>
+         <br>
+         <br> 
+         Select color: <select name="color">
+         	<option value = "red">Red</option>
+         	<option value = "green">Green</option>
+         	<option value = "blue">Blue</option>
+         	<option value = "yellow">Yellow</option>
+         	<option value = "cyan">Cyan</option>
+         	<option value = "magenta">Magenta</option>
+         	<option value = "black">Black</option>
+         	<option value = "pink">Pink</option>
+         	<option value = "purple">Purple</option>
+         	<option value = "orange">Orange</option>
+         </select>
+
+         <input type="submit" name="submit" value="submit">
+	</form>
+</body>
+</html>

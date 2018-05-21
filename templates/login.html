@@ -2,40 +2,48 @@
   <head>
     <title>Flask Intro - login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+    
   </head>
+  <style>
+    td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+  </style>
   <body>
     <div class="container">
-      <h1>Please login</h1>
+      <h1 align = "center">Please login</h1>
       <br>
-      <form action="" method="post">
-        <input type="text" placeholder="Username" name="username" value="{{
-          request.form.username }}">
-         <input type="password" placeholder="Password" name="password" value="{{
-          request.form.password }}">
-        <input class="btn btn-default" type="submit" value="Login">
+      <form action="http://localhost:5000/user" method="POST" align = "center">
+        <input type="text" placeholder="Username" name="username" value="{{ username }}" id="username">
+        <input type = "submit" name="submit" value="submit_user" />
+      </form>
+      <form action="http://localhost:5000/login" method="POST" id="form" align = "center">
+         <input type="password" placeholder="Password" name="password" value="" id="password" disabled="true">
+         <input type = "button" onClick="submit_pass()" value="submit_pass" />
       </form>
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
     </div>
-    <div class="container">
-      <table style="width:100%">
+    <div class="container" id="woah" align = "center">
+      <table border="2" id="table">
         <tr>
-          <th> - </th>
-          <th> Red </th>
-          <th> Green </th>
-          <th> Blue </th>
-          <th> Yellow </th>
-          <th> Cyan </th>
-          <th> Magenta </th>
-          <th> Black </th>
-          <th> Pink </th>
-          <th> Purple </th>
-          <th> Orange </th>
+          <td> - </td>
+          <td id = "0">   Red   </td>
+          <td id = "0">  Green  </td>
+          <td id = "0">   Blue  </td>
+          <td id = "0"> Yellow  </td>
+          <td id = "0">   Cyan  </td>
+          <td id = "0"> Magenta </td>
+          <td id = "0">  Black  </td>
+          <td id = "0">   Pink  </td>
+          <td id = "0"> Purple  </td>
+          <td id = "0"> Orange  </td>
         </tr>
         <tr>
-          <td> Red </td>
+          <td id = "0"> Red </td>
           <td> 0 </td>
           <td> 1 </td>
           <td> 2 </td>
@@ -48,7 +56,7 @@
           <td> 9 </td>
         </tr>
         <tr>
-          <td> Green </td>
+          <td id = "0"> Green </td>
           <td> a </td>
           <td> b </td>
           <td> c </td>
@@ -61,7 +69,7 @@
           <td> j </td>
         </tr>
         <tr>
-          <td> Blue </td>
+          <td id = "0"> Blue </td>
           <td> k </td>
           <td> l </td>
           <td> m </td>
@@ -74,20 +82,7 @@
           <td> t </td>
         </tr> 
         <tr>
-          <td> Blue </td>
-          <td> k </td>
-          <td> l </td>
-          <td> m </td>
-          <td> n </td>
-          <td> o </td>
-          <td> p </td>
-          <td> q </td>
-          <td> r </td>
-          <td> s </td>
-          <td> t </td>
-        </tr> 
-        <tr>
-          <td> Yellow </td>
+          <td id = "0"> Yellow </td>
           <td> u </td>
           <td> v </td>
           <td> w </td>
@@ -96,11 +91,11 @@
           <td> z </td>
           <td> ? </td>
           <td> ` </td>
-          <td>  </td>
-          <td>  </td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> Cyan </td>
+          <td id = "0"> Cyan </td>
           <td> A </td>
           <td> B </td>
           <td> C </td>
@@ -113,7 +108,7 @@
           <td> J </td>
         </tr>
         <tr>
-          <td> Magenta </td>
+          <td id = "0"> Magenta </td>
           <td> K </td>
           <td> L </td>
           <td> M </td>
@@ -124,8 +119,234 @@
           <td> R </td>
           <td> S </td>
           <td> T </td>
+        </tr>
+        <tr>
+          <td id = "0"> Black </td>
+          <td> U </td>
+          <td> V </td>
+          <td> W </td>
+          <td> X </td>
+          <td> Y </td>
+          <td> Z </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td id = "0"> Pink </td>
+          <td> ~ </td>
+          <td> ! </td>
+          <td> @ </td>
+          <td> # </td>
+          <td> $ </td>
+          <td> % </td>
+          <td> ^ </td>
+          <td> &amp; </td>
+          <td> * </td>
+          <td> ( </td>
+        </tr>
+        <tr>
+          <td id = "0"> Purple </td>
+          <td> ) </td>
+          <td> _ </td>
+          <td> + </td>
+          <td> - </td>
+          <td> = </td>
+          <td> [ </td>
+          <td> ] </td>
+          <td> { </td>
+          <td> } </td>
+          <td> \ </td>
+        </tr> 
+        <tr>
+          <td id = "0"> Orange </td>
+          <td> | </td>
+          <td> ; </td>
+          <td> ' </td>
+          <td> : </td>
+          <td> " </td>
+          <td> , </td>
+          <td> . </td>
+          <td> < </td>
+          <td> > </td>
+          <td> / </td>
         </tr>            
       </table>
+      <div class="row">
+        <h6 id="error_msg"> -- </h6>
+      </div>
     </div>
+    <div class="container">
+      <div class = "row" align="center">
+      <input type = "button" onClick="topm()" value="up" style = "font-size : 50px; width : 5%; height = 100px;"/><br>
+    </div>
+    <div class = "row" align = "center">
+      <br><input type = "button" onClick="leftm()" value="left" style = "font-size : 50px; width : 5%; height = 100px;" />
+      <input type = "button" onClick="enter()" value="enter" style = "font-size : 50px; width : 5%; height = 100px;" />
+      <input type = "button" onClick="rightm()" value="right" style = "font-size : 50px; width : 5%; height = 100px;" />
+    </div>
+    <div class = "row" align = "center"> 
+      <br><input type = "button" onClick="bottomm()" value="down" style = "font-size : 50px; width : 5%; height = 100px;" /><br>
+    </div>
+    <div class = "row" align = "center">
+      <br><input type = "button" onClick="clear_pass()" value="Clear"  style = "font-size : 50px; width : 5%; height = 100px;"/>
+      <input type = "button" onClick="backspace()" value="Backspace"  style = "font-size : 50px; width : 5%; height = 100px;"/>
+    </div>
+  </div>
+  </p>
+</div>
+
+<script>
+    var password_table = [
+                            ["0","1","2","3","4","5","6","7","8","9"],
+                           ["a","b","c","d","e","f","g","h","i","j"],
+                           ["k","l","m","n","o","p","q","r","s","t"],
+                           ["u","v","w","x","y","z","?","`"," "," "],
+                           ["A","B","C","D","E","F","G","H","I","J"],
+                           ["K","L","M","N","O","P","Q","R","S","T"],
+                           ["U","V","W","X","Y","Z"," "," "," "," "],
+                           ["~","!","@","#","$","%","^","&","*","("],
+                           [")","_","+","-","=","[","]","{","}","\\"],
+                           ["|",";","'",":","\"",",",".","<",">","/"]
+                           ];
+
+    var row_color = ["red", "green", "blue", "yellow", "cyan", "magenta", "black", "pink", "purple", "orange"];
+    var col_color = ["red", "green", "blue", "yellow", "cyan", "magenta", "black", "pink", "purple", "orange"];
+
+    password = "";
+    var i;
+    var z = document.getElementById("woah");
+    var x = z.getElementsByTagName("td");
+    error = document.getElementById("error_msg");
+    pass_field = document.getElementById("password");
+    var list = [];
+    for(i=0;i<x.length;i++){
+      
+      if(x[i].innerHTML.length > 3){
+        if(x[i].id=="0")
+          list.push(x[i]);
+      }
+
+    }
+
+    row_set = [];
+    col_set = [];
+    for(i=0;i<10;i++){
+      row_set.push(list[i]);
+      col_set.push(list[10+i]);
+    }
+    console.log(list.length);
+    shuffle(row_color);
+    shuffle(col_color);
+    console.log(row_set.length);
+    console.log(col_set.length);
+
+    function fill(){
+      for(i=0;i<row_set.length;i++){
+      row_set[i].style = "background-color:"+row_color[i]+";";
+      row_set[i].innerHTML = row_color[i];
+      row_set[i].id = "0";
+    }
+
+    for(i=0;i<col_set.length;i++){
+      col_set[i].style = "background-color:"+col_color[i]+";";
+      col_set[i].innerHTML = col_color[i];
+      col_set[i].id = "0";
+
+    }
+    }
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
+
+    function leftm(){
+      temp = row_color[0];
+      for(i=0;i<row_color.length;i++){
+        row_color[i] = row_color[(i+1)%10];
+      }
+      row_color[9] = temp;
+      fill();
+    }
+
+    function rightm(){
+      temp = row_color[9];
+      for(i=row_color.length;i>0;i--){
+        row_color[i] = row_color[(i-1)%10];
+      }
+      row_color[0] = temp;
+      fill();
+    }
+
+    function topm(){
+      temp = col_color[0];
+      for(i=0;i<col_color.length;i++){
+        col_color[i] = col_color[(i+1)%10];
+      }
+      col_color[9] = temp;
+      fill();
+    }
+
+    function bottomm(){
+      temp = col_color[9];
+      for(i=row_color.length;i>0;i--){
+        col_color[i] = col_color[(i-1)%10];
+      }
+      col_color[0] = temp;
+      fill();
+    }
+
+    function enter(){
+      password += password_table[col_color.indexOf("{{ color }}")][row_color.indexOf("{{ color }}")];
+              console.log("OK");
+              console.log(password);
+
+              //error.innerHTML = Array(password.length+1).join("*");
+              pass_field.value = password;
+
+              
+
+    }
+
+    function backspace(){
+      password = password.substring(0,password.length - 1);
+      pass_field.value = password;
+
+    }
+    function submit_pass(){
+      document.getElementById("password").disabled=false;
+      document.getElementById("username").disabled = true;
+      document.getElementById("form").submit();
+
+   }
+
+    function clear_pass(){
+      password="";
+      error.innerHTML = "*"*password.length;
+      pass_field.value = password;
+
+    }
+    fill();
+
+
+
+  </script>
+
   </body>
 </html>
